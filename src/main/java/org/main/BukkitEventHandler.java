@@ -53,10 +53,13 @@ public class BukkitEventHandler implements Listener {
 
     @EventHandler
     public void onCloseInventory(InventoryCloseEvent event) {
-        if (event.getInventory().equals(ChoiceInventory.getInventory())) {
-            if (hasParentGroup(event.getPlayer().getUniqueId(), "mst") &&
-                    hasParentGroup(event.getPlayer().getUniqueId(), "holy")) {
-                ChoiceInventory.openInventory((Player) event.getPlayer());
+        if (event.getPlayer() instanceof Player) {
+            Player player = (Player) event.getPlayer();
+            if (event.getInventory().equals(ChoiceInventory.getInventory())) {
+                if ((hasParentGroup(player.getUniqueId(), "mst")) &&
+                        (hasParentGroup(player.getUniqueId(), "holy"))) {
+                    ChoiceInventory.openInventory(player);
+                }
             }
         }
     }
