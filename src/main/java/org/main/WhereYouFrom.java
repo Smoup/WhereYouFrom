@@ -22,7 +22,7 @@ public final class WhereYouFrom extends JavaPlugin {
         luckPerms = instance.getServer().getServicesManager().getRegistration(LuckPerms.class).getProvider();
         Bukkit.getPluginManager().registerEvents(new BukkitEventHandler(), this);
         for (Player player : Bukkit.getOnlinePlayers()) {
-            if (hasParentGroup(player, "mst") || hasParentGroup(player, "holy")) {
+            if (hasParentGroup(player.getUniqueId(), "mst") || hasParentGroup(player.getUniqueId(), "holy")) {
                 ChoiceInventory.openInventory(player);
             }
         }
