@@ -20,7 +20,7 @@ public class BukkitEventHandler implements Listener {
     @EventHandler
     public void  onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        if (hasParentGroup(player.getUniqueId(), "mst") ||
+        if (hasParentGroup(player.getUniqueId(), "mst") &&
                 hasParentGroup(player.getUniqueId(), "holy")) {
             ChoiceInventory.openInventory(player);
         }
@@ -58,7 +58,7 @@ public class BukkitEventHandler implements Listener {
             if (event.getInventory().equals(ChoiceInventory.getInventory())) {
                 if ((hasParentGroup(player.getUniqueId(), "mst")) &&
                         (hasParentGroup(player.getUniqueId(), "holy"))) {
-                    ChoiceInventory.openInventory(player);
+                    Bukkit.getScheduler().runTaskLater(WhereYouFrom.getInstance(), () -> player.openInventory(event.getInventory()), 5L);
                 }
             }
         }
