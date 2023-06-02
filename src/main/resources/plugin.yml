@@ -1,0 +1,6 @@
+name: WhereYouFrom
+version: '${project.version}'
+main: org.main.WhereYouFrom
+api-version: 1.16
+depend:
+  - LuckPerms
